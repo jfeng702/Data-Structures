@@ -22,6 +22,8 @@ class LinkedList
     current.next = Node.new(val, nil)
   end
 
+# current adaptation does not always return deleted node
+# deletes 1 matching node
   def delete(val)
     current = @head
     if current.val == val
@@ -39,10 +41,16 @@ class LinkedList
         current = current.next
       end
     end
-
   end
 
   def return_list
+    current = @head
+    elements = [current]
+    while current && current.next
+      current = current.next
+      elements << current
+    end
+    elements
   end
 end
 
